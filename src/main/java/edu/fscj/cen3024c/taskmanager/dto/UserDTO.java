@@ -6,13 +6,18 @@
 package edu.fscj.cen3024c.taskmanager.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 import java.util.Set;
 
 public class UserDTO {
 
     private Integer id;
+
+    @NotBlank(message = "Username must not be blank")
     private String username;
 
+    @Size(min = 8, message = "Password must be at least 8 characters long")
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password; // for inbound writes only
 
